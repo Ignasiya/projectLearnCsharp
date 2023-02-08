@@ -1,0 +1,15 @@
+C:\Users\Василий\Documents\practicecode\ProectC\Ecample_001\bin\Debug\net7.0\Ecample_001.exe
+C:\Users\Василий\Documents\practicecode\ProectC\Ecample_001\bin\Debug\net7.0\Ecample_001.deps.json
+C:\Users\Василий\Documents\practicecode\ProectC\Ecample_001\bin\Debug\net7.0\Ecample_001.runtimeconfig.json
+C:\Users\Василий\Documents\practicecode\ProectC\Ecample_001\bin\Debug\net7.0\Ecample_001.dll
+C:\Users\Василий\Documents\practicecode\ProectC\Ecample_001\bin\Debug\net7.0\Ecample_001.pdb
+C:\Users\Василий\Documents\practicecode\ProectC\Ecample_001\obj\Debug\net7.0\Ecample_001.csproj.AssemblyReference.cache
+C:\Users\Василий\Documents\practicecode\ProectC\Ecample_001\obj\Debug\net7.0\Ecample_001.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\Василий\Documents\practicecode\ProectC\Ecample_001\obj\Debug\net7.0\Ecample_001.AssemblyInfoInputs.cache
+C:\Users\Василий\Documents\practicecode\ProectC\Ecample_001\obj\Debug\net7.0\Ecample_001.AssemblyInfo.cs
+C:\Users\Василий\Documents\practicecode\ProectC\Ecample_001\obj\Debug\net7.0\Ecample_001.csproj.CoreCompileInputs.cache
+C:\Users\Василий\Documents\practicecode\ProectC\Ecample_001\obj\Debug\net7.0\Ecample_001.dll
+C:\Users\Василий\Documents\practicecode\ProectC\Ecample_001\obj\Debug\net7.0\refint\Ecample_001.dll
+C:\Users\Василий\Documents\practicecode\ProectC\Ecample_001\obj\Debug\net7.0\Ecample_001.pdb
+C:\Users\Василий\Documents\practicecode\ProectC\Ecample_001\obj\Debug\net7.0\Ecample_001.genruntimeconfig.cache
+C:\Users\Василий\Documents\practicecode\ProectC\Ecample_001\obj\Debug\net7.0\ref\Ecample_001.dll
