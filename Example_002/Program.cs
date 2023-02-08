@@ -4,3 +4,4 @@ string username = Console.ReadLine();
 // ReadLine - ввод данных
 Console.Write("Привет, ");
 Console.Write(username);
+// WriteLine - Вывод подстроку
