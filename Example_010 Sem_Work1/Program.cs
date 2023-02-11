@@ -10,12 +10,12 @@ Console.WriteLine("Введите число, квадрат: ");
 int numberA = int.Parse(Console.ReadLine());
 Console.WriteLine("Введите число: ");
 int numberB = int.Parse(Console.ReadLine());
-int sqr = Convert.ToInt32(Math.Pow(numberB, 2));
-if (sqr == numberA)
+Console.WriteLine($"{Math.Pow(numberB, 2) == numberA}"); // для уточнения на True или False
+if (Math.Pow(numberB, 2) == numberA)
 {
-    Console.WriteLine($"Квадрат числа {numberB} ({sqr}) равен числу {numberA}");
+    Console.WriteLine($"Квадрат числа {numberB} равен числу {numberA}");
 }
 else 
 {
-    Console.WriteLine($"Квадрат числа {numberB} ({sqr}) не равен числу {numberA}");
+    Console.WriteLine($"Квадрат числа {numberB} не равен числу {numberA}");
 }
