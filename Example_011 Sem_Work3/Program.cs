@@ -3,16 +3,15 @@
 3 -> Среда
 5 ->  Пятница */
 
-Console.WriteLine("Введите число: ");
+Console.Clear();
+Console.Write("Введите число от 1 до 7: ");
 int number = int.Parse(Console.ReadLine());
-//while(number < 1||number > 7) || - "или", && - "и", != - не равно
-if (number > 0 && number < 8)
-{
-    Console.WriteLine("Введено неправильное число. Укажите число от 1 до 7");
-    return; // На блок схеме выход
+while(number < 1||number > 7){
+    Console.Write("Введено неправильное число. Укажите число от 1 до 7: ");
+    number = int.Parse(Console.ReadLine());
 } 
 if (number == 1){Console.WriteLine($"{number} день недели Monday");}
-if (number == 1){Console.WriteLine($"{number} день недели Tuesday");}
+if (number == 2){Console.WriteLine($"{number} день недели Tuesday");}
 if (number == 3){Console.WriteLine($"{number} день недели Wednesday");}
 if (number == 4){Console.WriteLine($"{number} день недели Thursday");}
 if (number == 5){Console.WriteLine($"{number} день недели Friday");}
