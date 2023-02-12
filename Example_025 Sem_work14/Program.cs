@@ -5,7 +5,7 @@
 
 Console.Clear();
 
-Console.Write("Введите любое двухзначное число: ");
+Console.Write("Введите любое число: ");
 int Number = int.Parse(Console.ReadLine());
-if (Number % 7 == 0 && Number % 23 == 0) Console.WriteLine($"Число {Number} кратно числу 7 и 23");
+if (Number % 7 == 0 && Number % 23 == 0) Console.WriteLine($"Число {Number} кратно числу 7 и 23"); // ((a||b)&&(d||c))
 else Console.WriteLine($"Число {Number} не кратно числу 7 и 23");
