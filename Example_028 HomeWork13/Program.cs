@@ -8,7 +8,7 @@ Console.Write("Введите число ");
 int number = int.Parse(Console.ReadLine());
 int result = number;
 if (number < -99 || number > 99){
-    for (int i = 0; result > 999; i ++){
+    for (int i = 0; result > 999 || result < -999; i ++){
         result = result / 10;
     }
     result = result % 10;

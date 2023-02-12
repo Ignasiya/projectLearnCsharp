@@ -11,5 +11,5 @@ while (number < 100 || number > 999){
     Console.Write("Введено неверное число, введите трехзначное число ");
     number = int.Parse(Console.ReadLine());
 }
-int result = ((number % 100) - (number % 10)) / 10;
+int result = number / 10 % 10;
 Console.WriteLine($"Вторая цифра числа {number} -> {result}");
