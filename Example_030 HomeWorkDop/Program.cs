@@ -20,7 +20,7 @@ Console.WriteLine("Hello, world!");
 }
 } */
 
-void SortSherengi(int[] collection)
+void PrintSherengi(int[] collection)
 {
     int count = collection.Length;
     int position = 0;
@@ -37,12 +37,14 @@ Console.Write("Введите количество учеников (не счи
 int countStudents = int.Parse(Console.ReadLine());
 Console.Write("Введите рост Пети, в сантиметрах: ");
 int heightPeti = int.Parse(Console.ReadLine());
+
 // Уточнение роста Пети, не карлик и не дылда же
 while (heightPeti < 150 || heightPeti > 200){
     Console.Write("Введен неверный рост, укажите верный рост Пети, в сантиметрах: ");
     heightPeti = int.Parse(Console.ReadLine());
 }
 Console.WriteLine($"Шеренга: ");
+
 // Расставляю рандомно рост остальных учеников в шеренге
 countStudents++;
 int[] sherenga = new int[countStudents];
@@ -55,9 +57,11 @@ while (index < countStudents - 1){
 sherenga[countStudents - 1] = heightPeti;
 Console.WriteLine();
 Console.WriteLine($"Шеренга с Петей: ");
+
 // Проверка шеренги с Петей
-SortSherengi(sherenga);
+PrintSherengi(sherenga);
 Console.WriteLine($"Шеренга в порядке невозрастания: ");
+
 // Начинаю пузырьковую сортировку
 int i = 0;
 while (i < countStudents){
@@ -70,8 +74,10 @@ while (i < countStudents){
     }
     i++;
 }
-// После сротировки
-SortSherengi(sherenga);
+
+// После сортировки
+PrintSherengi(sherenga);
+
 // Где же теперь Петя?
 int indexWithPeti = 0;
 int positionPeti = 0;
