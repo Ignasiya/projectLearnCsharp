@@ -20,6 +20,17 @@ Console.WriteLine("Hello, world!");
 }
 } */
 
+void SortSherengi(int[] collection)
+{
+    int count = collection.Length;
+    int position = 0;
+    while (position < count){
+        Console.Write($"{collection[position]} ");
+        position++;
+    }
+    Console.WriteLine();
+}
+
 Console.Clear();
 // Вводные данные
 Console.Write("Введите количество учеников (не считая Петю): ");
@@ -31,8 +42,7 @@ while (heightPeti < 150 || heightPeti > 200){
     Console.Write("Введен неверный рост, укажите верный рост Пети, в сантиметрах: ");
     heightPeti = int.Parse(Console.ReadLine());
 }
-Console.WriteLine();
-Console.WriteLine($"Шеренга без Пети ");
+Console.WriteLine($"Шеренга: ");
 // Расставляю рандомно рост остальных учеников в шеренге
 countStudents++;
 int[] sherenga = new int[countStudents];
@@ -44,15 +54,10 @@ while (index < countStudents - 1){
 }
 sherenga[countStudents - 1] = heightPeti;
 Console.WriteLine();
-Console.WriteLine($"Шеренга с Петей ");
+Console.WriteLine($"Шеренга с Петей: ");
 // Проверка шеренги с Петей
-int iWithPeti = 0;
-while (iWithPeti < countStudents){    
-    Console.Write($"{sherenga[iWithPeti]} ");
-    iWithPeti++;
-}
-Console.WriteLine();
-Console.WriteLine($"Шеренга выстраивается в порядке невозрастания");
+SortSherengi(sherenga);
+Console.WriteLine($"Шеренга в порядке невозрастания: ");
 // Начинаю пузырьковую сортировку
 int i = 0;
 while (i < countStudents){
@@ -66,19 +71,14 @@ while (i < countStudents){
     i++;
 }
 // После сротировки
-int isort = 0;
-while (isort < countStudents){    
-    Console.Write($"{sherenga[isort]} ");
-    isort++;
-}
-Console.WriteLine();
+SortSherengi(sherenga);
 // Где же теперь Петя?
 int indexWithPeti = 0;
-int position = 0;
+int positionPeti = 0;
 while (indexWithPeti < countStudents){
     if(sherenga[indexWithPeti] == heightPeti)    {
-        position = indexWithPeti;        
+        positionPeti = indexWithPeti;        
     }
     indexWithPeti++;
 }
-Console.WriteLine($"Место Пети в шеренге {position+1}");
+Console.WriteLine($"Место Пети в шеренге {positionPeti+1}");
