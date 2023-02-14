@@ -7,7 +7,7 @@
 Console.Clear();
 Console.Write("Введите трехзначное число ");
 int number = int.Parse(Console.ReadLine());
-while (number < 100 || number > 999){
+while (number < -999 || (number > -100 && number < 100) || number > 999){
     Console.Write("Введено неверное число, введите трехзначное число ");
     number = int.Parse(Console.ReadLine());
 }
