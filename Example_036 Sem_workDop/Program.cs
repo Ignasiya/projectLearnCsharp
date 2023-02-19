@@ -16,7 +16,7 @@ bool FindElInMas(string[] array, string el){
     List<string> result = new List<string>(); // [] - динамический массив
     s += "; ";
     string s1 = "";
-    int j = 0;
+    
     for (int i = 0; i < s.Length - 1; i++){
         if ("; " == s[i].ToString() + s[i + 1].ToString()){
             result.Add(s1);

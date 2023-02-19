@@ -12,7 +12,7 @@ string text = "- Я думаю, - сказал князь, улыбаясь, - �
 //             012345
 // s[3] // r
 
-string Replace(string text, char oldValue, char newValue)
+string Replace(string text, char oldValue, char newValue) // char(буква) хранит один элемент, а string(строка) несколько
 {
     string result = String.Empty;
 
