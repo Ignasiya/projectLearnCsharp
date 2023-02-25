@@ -29,14 +29,32 @@ int Input(string text)
     return num;
 }
 
-/* int Result(int[] array)
+int Result(int[] array, int day)
 {
-    
-    return index;
-} */
+    int max = 0; int maxDay = 0;
+    while(day < array.Length){
+        if(max < array[day]){
+            max = array[day];
+            maxDay = day;          
+        }day ++;
+    }    
+    return maxDay;
+}
 
 Console.Clear();
 int size = Input($"Введите количество дней: ");
 int[] array = Array(size);
 Console.WriteLine($"Цены на все дни -> [{String.Join(", ", array)}]");
-// int daySale = Result(array);
+int daySale = Result(array, 0);
+int cash = (daySale + 1) * array[daySale];
+Console.WriteLine($"Продал в {daySale} день, всего заработал {cash}"); // До сюда работает отлично
+
+// Не стал записывать в метод, сам потом не разбирусь
+int temp = 0;
+while (daySale < array.Length - 1){
+    temp = Result(array, daySale + 1);
+    cash = cash + (temp - daySale) * array[temp];
+    daySale = temp;
+    Console.WriteLine($"Продал в {daySale} день, всего заработал {cash}");    
+}
+Console.WriteLine($"На продаже волосов заработал -> {cash}");
