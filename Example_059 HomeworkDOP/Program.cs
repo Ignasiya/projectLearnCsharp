@@ -8,7 +8,7 @@
 Заметим, что волосы у неформала растут только ночью и вырастают на 1 сантиметр за ночь. Следует также учесть, что до 0-го 
 дня неформал с горя подстригся наголо и к 0-му дню длина его волос составляла 1 сантиметр. */
 
-int[] Array(int size)
+int[] Array(int size)  // Формирую массив из рандомных чисел
 {
     int[] array = new int[size];
     for (int i = 0; i < size; i++){
@@ -17,7 +17,7 @@ int[] Array(int size)
     return array;    
 }
 
-int Input(string text)
+int Input(string text)  // Ввод размера массива
 {
     Console.Write(text);
     int num = int.Parse(Console.ReadLine());
@@ -29,7 +29,7 @@ int Input(string text)
     return num;
 }
 
-int Result(int[] array, int day)
+int Result(int[] array, int day) // Расчет максимального значения и его индекса
 {
     int max = 0; int maxDay = 0;
     while(day < array.Length){
