@@ -58,6 +58,7 @@ for(int i = 0; ; i++){ // Основное действие c бесконечн
     }    
     RewriteTetris(tetris);// Перерисовывает поле
 }
+
 void PaintFigure(string[,] tetris, string[,]tetrisFig, int high, int width){ // Рисует фигуру
     for (int y = 0; y < tetrisFig.GetLength(0); y++){
         for (int x = 0; x < tetrisFig.GetLength(1); x++){
