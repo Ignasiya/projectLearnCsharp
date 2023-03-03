@@ -13,11 +13,29 @@ for(int i = 0; ; i++){ // Основное действие c бесконечн
     Console.Clear();
     UpdateTetris(tetris);    
     int high = 0; int width = 3;
+    string [,] tetrisFig = GenerateFigure(); // Задаем случайную фигуру
     while(high < 17){ // Граница
-        if (TetrisFigO(tetris, high, width) == true) break;
+        // Рисуем фигуру
+        for (int y = 0; y < tetrisFig.GetLength(0); y++){
+            for (int x = 0; x < tetrisFig.GetLength(1); x++){                
+                if (tetris[high + y, width + x] != "#")
+                    tetris[high + y, width + x] = tetrisFig[y ,x];
+            }
+        }        
+        Console.Clear();
+        UpdateTetris(tetris);        
+        if (MoveValidateDown(tetris, tetrisFig, high, width) == true) break;        
+        ClearFigure(tetris, tetrisFig, high, width); // Стирает фигуру
         high++;        
         await Task.Delay(2000);
-    }    
+        /*while (Console.ReadKey(true).Key == ConsoleKey.RightArrow){
+            width++;            
+        } 
+        while (Console.ReadKey(true).Key == ConsoleKey.LeftArrow){
+            width--;            
+        }*/
+    }
+    RewriteTetris(tetris);// Перерисовывает поле
 }
 
 void UpdateTetris(string[,] tetris) // Метод обновления поля для тетриса
@@ -30,73 +48,124 @@ void UpdateTetris(string[,] tetris) // Метод обновления поля 
     }
 }
 
-void Border(string[,] array) // Метод изготовки рамки
+void RewriteTetris(string[,] tetris) // Метод перерисовывания фигур в поле для тетриса
+{
+    for(int i = 0; i < tetris.GetLength(0); i++){
+        for(int j = 1; j < tetris.GetLength(1) - 1; j++){
+            if (tetris[i, j] == "*") tetris[i, j] = "#";
+        }
+    }
+}
+
+void Border(string[,] array) // Метод изготовки рамки по краям
 {
     int y = 0; int x = 0;
-    for (; y < array.GetLength(0) - 1; y++) array[y, x] = "*";
-    for (; x < array.GetLength(1) - 1; x++) array[y, x] = "*";
-    for (; y >= 0; y--) array[y,x] = "*";
+    array[y, x] = "|";
+    for (; y < array.GetLength(0) - 1; y++) array[y, x] = "|";
+    for (x = 1; x < array.GetLength(1) - 1; x++) array[y, x] = "―";
+    for (; y > 0; y--) array[y - 1, x] = "|";
 }
 
-/* void GenerateFigure() // Генератор фигур
+string[,] GenerateFigure() // Генератор фигур
 {
-    switch(new Random().Next(1, 6)){    
-        case 1:{TetrisFigO; break;}
-        case 2:{TetrisFigI; break;}
-        case 3:{TetrisFigL; break;}
-        case 4:{TetrisFigZ; break;}
-        case 5:{TetrisFigT; break;}
+    string[,] tetrisFigO = new string[2,2]{
+        {"*", "*"},
+        {"*", "*"},
     };
-} */
+    string[,] tetrisFigI = new string[4,1]{
+        {"*"},
+        {"*"},
+        {"*"},
+        {"*"},
+    };
+    string[,] tetrisFigL1 = new string[2,3]{
+        {"*", " ", " "},
+        {"*", "*", "*"},
+    };
+    string[,] tetrisFigL2 = new string[2,3]{
+        {" ", " ", "*"},
+        {"*", "*", "*"},
+    };
+    string[,] tetrisFigZ1 = new string[2,3]{
+        {" ", "*", "*"},
+        {"*", "*", " "},
+    };
+    string[,] tetrisFigZ2 = new string[2,3]{
+        {"*", "*", " "},
+        {" ", "*", "*"},
+    };
+    string[,] tetrisFigT = new string[2,3]{
+        {" ", "*", " "},
+        {"*", "*", "*"},
+    };
+    string[,] figure = tetrisFigO;
+    switch(new Random().Next(1, 6)){    
+        case 1:{break;}
+        case 2:{figure = tetrisFigI; break;}
+        case 3:{figure = tetrisFigL1; break;}
+        case 4:{figure = tetrisFigL2; break;}
+        case 5:{figure = tetrisFigZ1; break;}
+        case 6:{figure = tetrisFigZ2; break;}
+        case 7:{figure = tetrisFigT; break;}
+    };
+    return figure;
+}
 
-bool TetrisFigO(string[,] tetris, int high, int width) // Метод написания фигуры О
+void ClearFigure(string[,] tetris, string[,]tetrisFig, int high, int width) // Стирает фигуру
 {
-    string[,] tetrisFigO = new string[2,2];    
-    // Рисует фигуру
-    for (int y = 0; y < tetrisFigO.GetLength(0); y++){
-        for (int x = 0; x < tetrisFigO.GetLength(1); x++){
-            tetrisFigO[y ,x] = "#";
-            tetris[high + y, width + x] = tetrisFigO[y ,x];
+    for (int y = 0; y < tetrisFig.GetLength(0); y++){
+        for (int x = 0; x < tetrisFig.GetLength(1); x++){
+            if(tetris[high + y, width + x] == "*")
+                tetris[high + y, width + x] = " ";
         }
     }
-    Console.Clear();
-    UpdateTetris(tetris);
-    if (MoveValidateDown(tetris, tetrisFigO, high, width) == true) return true;
-    // Стирает фигуру
-    for (int y = 0; y < tetrisFigO.GetLength(0); y++){
-        for (int x = 0; x < tetrisFigO.GetLength(1); x++){
-            tetris[high + y, width + x] = " ";
-        }
-    }
-    return false;
-}
-
-void TetrisFigI()
-{
-
-}
-
-void TetrisFigL()
-{
-
-}
-
-void TetrisFigZ()
-{
-
-}
-
-void TetrisFigT()
-{
-
 }
 
 bool MoveValidateDown(string[,] tetris , string[,] tetrisFig, int high, int width) // Проверка на движение вниз
 {
     for (int y = 0; y < tetrisFig.GetLength(0); y++){
         for (int x = 0; x < tetrisFig.GetLength(1); x++){
-            if (tetris[high + tetrisFig.GetLength(0), width + x] != " ") return true; // Нижняя сторона
+            if (tetris[high + y, width + x] == "*"){
+                if (tetris[high + y + 1, width + x] == "#" ||
+                tetris[high + y + 1, width + x] == "―") return true;
+            }                          
         }
     }
     return false;
+}
+
+void MoveValidateRight(string[,] tetris , string[,] tetrisFig, int high, int width) // Проверка на движение вправо
+{
+    for (int y = 0; y < tetrisFig.GetLength(0); y++){
+        for (int x = 0; x < tetrisFig.GetLength(1); x++){
+            if (tetris[high + y, width + x] == "*"){
+                if (tetris[high + y, width + x + 1] == "#" ||
+                tetris[high + y, width + x + 1] == "|") return;
+            }
+        }
+        for (y = 0; y < tetrisFig.GetLength(0); y++){
+            for (int x = 0; x < tetrisFig.GetLength(1); x++){                
+                if (tetris[high + y, width + x + 1] != "#")
+                    tetris[high + y, width + x + 1] = tetrisFig[y ,x];
+            }
+        }
+    }
+}
+
+void MoveValidateLeft(string[,] tetris , string[,] tetrisFig, int high, int width) // Проверка на движение влево
+{
+    for (int y = 0; y < tetrisFig.GetLength(0); y++){
+        for (int x = tetrisFig.GetLength(1) - 1; x >= 0; x--){
+            if (tetris[high + y, width + x] == "*"){
+                if (tetris[high + y, width + x - 1] == "#" ||
+                tetris[high + y, width + x - 1] == "―") return;
+            }                          
+        }
+        for (y = 0; y < tetrisFig.GetLength(0); y++){
+            for (int x = 0; x < tetrisFig.GetLength(1); x++){                
+                if (tetris[high + y, width + x - 1] != "#")
+                    tetris[high + y, width + x - 1] = tetrisFig[y ,x];
+            }
+        }
+    }    
 }
