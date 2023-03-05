@@ -38,13 +38,18 @@ for(int i = 0; ; i++){ // Основное действие c бесконечн
             if (btn == ConsoleKey.UpArrow){
                 ClearFigure(tetris, tetrisFig, high, width);
                 tetrisFig = RotateFigure(tetrisFig);
+                for (int y = 0; y < tetrisFig.GetLength(0); y++){          
+                    if (tetris[high + y, width - 1 + tetrisFig.GetLength(1)] == "|" || tetris[high + y , width - 1 + tetrisFig.GetLength(1)] == "#") width--;
+                    if (tetris[high + y, width] == "|" || tetris[high + y , width] == "#") width++;
+                    if (tetris[high - 1 + tetrisFig.GetLength(0), width + y] == "―" || tetris[high - 1 + tetrisFig.GetLength(0), width + y] == "#") high--;
+                }    
                 PaintFigure(tetris, tetrisFig, high, width);
                 Console.Clear();
                 UpdateTetris(tetris);                
             }
             if (btn == ConsoleKey.DownArrow && MoveValidateDown(tetris, tetrisFig, high, width) == false){
                 ClearFigure(tetris, tetrisFig, high, width);
-                high++;
+                high++;                
                 PaintFigure(tetris, tetrisFig, high, width);
                 Console.Clear();
                 UpdateTetris(tetris);                

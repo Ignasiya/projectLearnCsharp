@@ -35,15 +35,8 @@ using static System.Console;
 
 // Основное действие
 Clear();
-string[,] planet = {
-    {"", "#", "-", "-", "-"}, 
-    {"-", "-", "#", "#", "-"}, 
-    {"-", "#", "-", "-", "-"}, 
-    {"-", "-", "#", "-", "-"}, 
-    {"-", "-", "-", "#", "-"}
-    };
-// LiveDeathPlanet("Введите размеры планеты (высота, ширина) через пробел и нажмите Enter: ");
-// PopulatePlanet(planet);
+string[,] planet = LiveDeathPlanet("Введите размеры планеты (высота, ширина) через пробел и нажмите Enter: ");
+PopulatePlanet(planet);
 SeePlanet(planet);
 WriteLine();
 Write("Введите количество поколений, нажмите Enter и наблюдаем симуляцию: ");
