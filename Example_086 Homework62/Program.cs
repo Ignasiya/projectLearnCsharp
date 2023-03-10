@@ -1,6 +1,5 @@
 ﻿/* *Задача 62**. Напишите программу, которая заполнит спирально массив 4 на 4.Например, 
 на выходе получается вот такой массив:
-
 01 02 03 04
 12 13 14 05
 11 16 15 06
@@ -10,65 +9,52 @@ using System;
 using static System.Console;
 
 Clear();
-int[,] array = new int[6, 6];
-int[] digit = GetArray(array);
-FillArray(array, digit);
+int[,] array = InputData($"Введите размеры двухмерного массива через пробел и нажмите Enter: ");
+FillArray(array);
 PrintArray(array);
 
-void FillArray(int[,] array, int[] digit)
+int[,] InputData(string text)
 {
-    int index = 0;
-    int j = 0;
-    int size = 0;
-    for (int i = 0; i < array.GetLength(0) / 2; i++)
-    {
-        for (j = size; j < array.GetLength(1) - size; j++)
-        {
-            array[i, j] = digit[index];
-            index++;
-            Write($"{i}, {j}; ");
-        }
-        WriteLine();
-        i++; 
-        j--;
-        for (; i < array.GetLength(0) - size; i++)
-        {
-            array[i, j] = digit[index];
-            index++;
-            Write($"{i}, {j}; ");
-        } 
-        i-=2;
-        WriteLine();
-        for (; i > 0; i--)
-        {
-            array[j, i] = digit[index];
-            index++;
-            Write($"{j}, {i}; ");
-        }
-        i += size;
-        j -= size;
-        WriteLine();
-        for (; j > size * 2 - i; j--)
-        {
-            array[j, i] = digit[index];
-            index++;
-            Write($"{j}, {i}; ");
-        }
-        WriteLine();
-        WriteLine();
-        if (index == digit.Length) break;
-        size++;
-    }
+    Write(text);
+    int[] size = ReadLine().Split(" ").Select(int.Parse).ToArray();
+    int[,] array = new int[size[0] ,size[1]];
+    return array;
 }
 
-int[] GetArray(int[,] array)
+void FillArray(int[,] array)
 {
-    int[] arr = new int[array.GetLength(0) * array.GetLength(1)];
-    for (int i = 0; i < arr.Length; i++)
+    int minCycle = array.GetLength(0);
+    if (minCycle > array.GetLength(1)) minCycle = array.GetLength(1);
+    int index = 0;
+    for (int i = 0; i < minCycle; i++)
     {
-        arr[i] = i + 1;
+        int j = i;
+        int k = i + 1;
+        for (; j < array.GetLength(1) - i; j++)
+        {
+            index++;
+            array[i, j] = index;
+            if(index == array.GetLength(0) * array.GetLength(1)) return;        
+        }        
+        for (j--; k < array.GetLength(0) - i; k++)
+        {
+            index++;
+            array[k, j] = index;
+            if(index == array.GetLength(0) * array.GetLength(1)) return;          
+        }
+        for (j--, k--; j >= 0 + i; j--)
+        {
+            index++;
+            array[k, j] = index;
+            if(index == array.GetLength(0) * array.GetLength(1)) return;
+        }        
+        for (j++, k--; k > 0 + i; k--)
+        {
+            index++;
+            array[k, j] = index;
+            if(index == array.GetLength(0) * array.GetLength(1)) return;      
+        } 
     }
-    return arr;
 }
 
 void PrintArray(int[,] inArray)
