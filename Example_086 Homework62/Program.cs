@@ -10,7 +10,7 @@ using System;
 using static System.Console;
 
 Clear();
-int[,] array = new int[4, 4];
+int[,] array = new int[6, 6];
 int[] digit = GetArray(array);
 FillArray(array, digit);
 PrintArray(array);
@@ -26,25 +26,37 @@ void FillArray(int[,] array, int[] digit)
         {
             array[i, j] = digit[index];
             index++;
-        } 
+            Write($"{i}, {j}; ");
+        }
+        WriteLine();
         i++; 
         j--;
         for (; i < array.GetLength(0) - size; i++)
         {
             array[i, j] = digit[index];
             index++;
-        } i-=2;
+            Write($"{i}, {j}; ");
+        } 
+        i-=2;
+        WriteLine();
         for (; i > 0; i--)
         {
             array[j, i] = digit[index];
             index++;
+            Write($"{j}, {i}; ");
         }
-        for (; j > size + size; j--)
+        i += size;
+        j -= size;
+        WriteLine();
+        for (; j > size * 2 - i; j--)
         {
             array[j, i] = digit[index];
             index++;
+            Write($"{j}, {i}; ");
         }
-        if (index == 16) break;
+        WriteLine();
+        WriteLine();
+        if (index == digit.Length) break;
         size++;
     }
 }
