@@ -2,8 +2,7 @@ using System.Net.Sockets;
 using System.Text;
 
 namespace Client
-{
-    class OurClient
+{    class OurClient
     {
         private TcpClient client;
         private StreamWriter sWriter;
@@ -26,7 +25,6 @@ namespace Client
                 sWriter.Flush();
             }
         }
-
 
     }
 }
