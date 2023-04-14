@@ -26,7 +26,6 @@ public class PostgresRepository : IRepository<Worker>
     {
         return db.WorkersTable.ToArray();
     }
-
     public void Update(int id, Worker newItem)
     {
         Worker t = db.WorkersTable.First(e => e.Id == id);
